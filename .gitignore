@@ -1,5 +1,4 @@
 # exclude
-pom.xml-orig
 target
 build
 transaction-logs
@@ -9,5 +8,4 @@ btm2.tlog
 .gradle/*
 gradle/*
 /readinglist.iml
-gradlew
-gradlew.bat
+
