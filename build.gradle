@@ -1,0 +1,61 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'readinglist'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {    
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.codehaus.groovy:groovy-all:2.4.1')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    // Applications that use spring-boot-devtools will automatically restart whenever files on the classpath change
+    // http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-devtools.html
+    // compile("org.springframework.boot:spring-boot-devtools")
+	//runtime('com.h2database:h2')
+	runtime('mysql:mysql-connector-java:5.1.16')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.spockframework:spock-core:1.1-groovy-2.4-rc-1')
+    testCompile('org.spockframework:spock-spring:1.1-groovy-2.4-rc-1')
+// Spock 1.0 doesn't support @SpringBootTest
+//http://stackoverflow.com/questions/38544788/spring-boot-1-4-spock-and-application-properties/38552695#38552695
+//testCompile('org.spockframework:spock-core:1.0-groovy-2.4')
+    //testCompile('org.spockframework:spock-spring:1.0-groovy-2.4')
+    
+    // optional dependencies for using Spock
+    //testCompile "org.hamcrest:hamcrest-core:1.3" // only necessary if Hamcrest matchers are used
+    //testRuntime "cglib:cglib-nodep:3.1"          // allows mocking of classes (in addition to interfaces)
+    //testRuntime "org.objenesis:objenesis:2.1"    // allows mocking of classes w/o default constructor (together with CGLIB)
+}
+
+
+eclipse {
+	classpath {
+		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+	}
+}

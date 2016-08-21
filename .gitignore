@@ -1,0 +1,13 @@
+# exclude
+pom.xml-orig
+target
+build
+transaction-logs
+btm1.tlog
+btm2.tlog
+.idea/*
+.gradle/*
+gradle/*
+/readinglist.iml
+gradlew
+gradlew.bat
