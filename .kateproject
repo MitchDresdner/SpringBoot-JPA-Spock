@@ -1,0 +1,4 @@
+{
+	"name": "PersistentCXF",
+	"files": [ {"git": 1, "recursive": 1 }]
+}
