@@ -1,4 +1,4 @@
 {
-	"name": "PersistentCXF",
+	"name": "SpringBoot-JPA-Spock",
 	"files": [ {"git": 1, "recursive": 1 }]
 }

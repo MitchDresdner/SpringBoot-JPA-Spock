@@ -5,6 +5,28 @@ error:
 amazon:
   associate_id: habuma-20
 
+  
 logging:
   level:
+    root: INFO
+
+    
+---
+
+spring:
+  profiles: development
+
+  logging:
+  level:
     root: DEBUG
+
+---
+
+spring:
+  profiles: production
+
+  logging:
+    path: /tmp/
+    file: BookWorm.log
+    level:
+      root: WARN

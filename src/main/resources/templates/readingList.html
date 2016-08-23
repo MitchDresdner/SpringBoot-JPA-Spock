@@ -2,14 +2,21 @@
   <head>
     <title>Reading List</title>
     <link rel="stylesheet" th:href="@{/style.css}"></link>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
   </head>
 
   <body>
-    <h2>Your Reading List</h2>
+    <form method="POST" th:action="@{/logout}">
+      <input type="submit" value="Logout" />
+    </form>
+
+    <h2><span th:text="${reader.fullname}">Name</span>'s Reading List</h2>
     <div th:unless="${#lists.isEmpty(books)}">
       <dl th:each="book : ${books}">
         <dt class="bookHeadline">
-          <span th:text="${book.title}">Title</span> by 
+          <a th:href="'http://www.amazon.com/gp/product/' 
+                      + ${book.isbn} + '/tag=' + ${amazonID}" 
+             th:text="${book.title}">Title</a> by 
           <span th:text="${book.author}">Author</span>
           (ISBN: <span th:text="${book.isbn}">ISBN</span>)
         </dt>
@@ -29,7 +36,7 @@
     <hr/>
     
     <h3>Add a book</h3>
-    <form method="POST">
+    <form method="POST" th:action="@{/}">
       <label for="title">Title:</label>
         <input type="text" name="title" size="50"></input><br/>
       <label for="author">Author:</label>
